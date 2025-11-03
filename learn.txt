@@ -1,0 +1,24 @@
+// The frontController.
+
+=> One script that handles all request. In index.php file we have create page variable to pass query string page to render each 
+   of the file within the index.php?page=home,list or product etc.
+
+   Centralized Entry Point: Instead of having multiple PHP files in your web directory (e.g., login.php, profile.php), all
+      requests (like example.com/login or example.com/profile) are directed by the webserver to a single PHP file. In Laravel
+      and Symfony, this file is typically public/index.php. In WordPress, it's the index.php in the root directory.
+
+   In short, the front controller acts like a traffic cop for your entire application. It ensures every request goes through
+  a consistent process for security, routing, and session management before any specific application code is executed
+
+
+// Public folder  - Why Laravel, Symfony like framework are more secured because they contain 'public' folder ?
+
+=> If any server is misconfigured and php is disabled, files are accessible in the web browser. and if we run the file project/public?page=home then without executing code it will be downloaded. So, attacker can get access all of your source code and download your important source codes. So, the minimum amount of code we should put into the publicly accessible file or that can be downloaded by attackers (public folder).
+
+Public folder -- A clear separation between public-facing files and sensitive application code and The public directory is designed to be the only folder exposed to the internet. When you configure a web server (like Apache or Nginx), you point its "document root" to the public folder. It Sets the Web Server's "Document Root". It Prevents Direct URL Access to web browsers to Sensitive Files. 
+
+If all your files (including .env) were in the same folder that the web server points to, a request for
+http://example.com/.env could potentially expose your database password, especially if the server is misconfigured to show
+files as plain text instead of executing them.
+
+So, we can say the public folder is used in a framework because it cleanly separates web accessible files from private code. which improve security and organization.
