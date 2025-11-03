@@ -1,8 +1,7 @@
-// The frontController.
+=====> The frontController.
 
-=> One script that handles all request. In index.php file we have create page variable to pass query string page to render each 
+= One script that handles all request. In index.php file we have create page variable to pass query string page to render each 
    of the file within the index.php?page=home,list or product etc.
-
    Centralized Entry Point: Instead of having multiple PHP files in your web directory (e.g., login.php, profile.php), all
       requests (like example.com/login or example.com/profile) are directed by the webserver to a single PHP file. In Laravel
       and Symfony, this file is typically public/index.php. In WordPress, it's the index.php in the root directory.
@@ -11,9 +10,21 @@
   a consistent process for security, routing, and session management before any specific application code is executed
 
 
-// Public folder  - Why Laravel, Symfony like framework are more secured because they contain 'public' folder ?
 
-=> If any server is misconfigured and php is disabled, files are accessible in the web browser. and if we run the file project/public?page=home then without executing code it will be downloaded. So, attacker can get access all of your source code and download your important source codes. So, the minimum amount of code we should put into the publicly accessible file or that can be downloaded by attackers (public folder).
+=====> Why Frameworks like Laravel or Symfony Use a public/ Folder
+
+Key Reason:
+👉 To protect source code by exposing only what’s necessary to the browser.
+
+==== Explanation ==== :
+If a server is misconfigured and PHP execution is disabled, files may become directly downloadable from the browser.
+For example: visiting http://example.com/project/public?page=home
+could expose your raw .php code instead of executing it.
+This allows attackers to download sensitive files and steal your source code.
+
+Security Principle:
+✅ Only keep publicly safe assets (like index.php, CSS, JS, and images) inside the public/ folder.
+🚫 Keep all core code (app, config, vendor, etc.) outside the web-accessible directory.
 
 Public folder -- A clear separation between public-facing files and sensitive application code and The public directory is designed to be the only folder exposed to the internet. When you configure a web server (like Apache or Nginx), you point its "document root" to the public folder. It Sets the Web Server's "Document Root". It Prevents Direct URL Access to web browsers to Sensitive Files. 
 
